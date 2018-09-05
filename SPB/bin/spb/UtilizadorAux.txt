@@ -1,0 +1,32 @@
+(deftemplate incentivo
+	(slot desconto)
+	(slot estacao))
+
+;(deftemplate fimpercurso
+;	(slot distPercorrida ?dp)
+;)
+
+(deftemplate utilizador
+	(slot incentivoMin)
+	(slot velocidade)
+	(slot tempo)
+	(slot distTotal)
+	(slot distPercorrida)
+	(slot estacaoFinal)
+	(multislot coordsAtuais)
+	(multislot coordsFim))
+
+;(defrule atualizaPosicao
+;	?p<-(utilizador(incentivoMin ?i)(velocidade ?v)(tempo ?t)(distTotal ?dt)(distPercorrida ?dp)(estacaoFinal ?e)(coordsAtuais ?x0 ?y0)(coordsFim ?x1 ?y1)) 
+;	=>
+;	(if(>= (+ (* ?v ?t) ?dp) ?dt) then {(printout t "if" crlf)(modify ?facto (distPercorrida ?dt)(coordsAtuais ?x1 ?y1))}
+;	else {(printout t "else" crlf)(modify ?facto (distPercorrida (+ (* ?v ?t) ?dp))(coordsAtuais (+ ?x0 (/ (* (* ?v ?t) (- ?x1 ?x0))(- ?dt ?dp))) (+ ?y0 (/ (* (* ?v ?t) (- ?y1 ?y0)))(- ?dt ?dp))))})	
+;)
+
+(defquery procuraIncentivos
+	(incentivo (desconto ?d)(estacao ?e))
+)
+
+(defquery procuraUtilizadores
+	(utilizador(incentivoMin ?i)(velocidade ?v)(tempo ?t)(distTotal ?dt)(estacaoFinal ?e)(distPercorrida ?dp)(coordsAtuais ?x0 ?y0)(coordsFim ?x1 ?y1))
+)
